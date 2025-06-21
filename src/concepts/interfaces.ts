@@ -52,8 +52,8 @@ const deepWork1: Book = {
   },
 };
 
-deepWork.printAuthor();
-deepWork1.printAuthor();
+// deepWork.printAuthor();
+// deepWork1.printAuthor();
 // console.log(deepWork.printTitle("is awesome book"));
 // console.log(deepWork1.printTitle("is awesome book"));
 // console.log(deepWork.printSomething(5));
@@ -78,5 +78,62 @@ const computer: Computer = {
   },
 };
 
-console.log(computer);
-console.log(computer.upgradeRam(8));
+// console.log(computer);
+// console.log(computer.upgradeRam(8));
+
+// Merge interfaces
+interface Person {
+  name: string;
+  getDetails(): string;
+}
+
+interface DogOwner {
+  dogName: string;
+  getDogDetails(): string;
+}
+
+interface Person {
+  age: number;
+}
+
+const person: Person = {
+  name: "cris",
+  age: 29,
+  getDetails() {
+    return `My name is ${this.name}, Age: ${this.age}`;
+  },
+};
+
+interface Employee extends Person {
+  employeeId: number;
+}
+
+const employee: Employee = {
+  employeeId: 1,
+  name: "andres",
+  age: 29,
+  getDetails() {
+    return `Name is ${this.name}, Age: ${this.age}, EmployeeID: ${this.employeeId}`;
+  },
+};
+
+// console.log(person.getDetails());
+interface Manager extends Person, DogOwner {
+  managePeople(): void;
+}
+
+const manager: Manager = {
+  name: "bob",
+  age: 35,
+  dogName: "rex",
+  getDogDetails() {
+    return `Name is ${this.dogName}, Age: ${this.age}`;
+  },
+  getDetails() {
+    return `Name is ${this.name}, Age: ${this.age}`;
+  },
+  managePeople() {
+    return 5;
+  },
+};
+
